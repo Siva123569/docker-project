@@ -1,0 +1,77 @@
+// AuthRequest.java
+package com.flipkart.ecommerce.dto;
+
+import lombok.Data;
+import jakarta.validation.constraints.NotBlank;
+
+@Data
+public class AuthRequest {
+    @NotBlank
+    private String username;
+    
+    @NotBlank
+    private String password;
+}
+
+// AuthResponse.java
+package com.flipkart.ecommerce.dto;
+
+import lombok.Builder;
+import lombok.Data;
+
+@Data
+@Builder
+public class AuthResponse {
+    private String token;
+    private String username;
+    private String email;
+    private String role;
+}
+
+// RegisterRequest.java
+package com.flipkart.ecommerce.dto;
+
+import lombok.Data;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
+@Data
+public class RegisterRequest {
+    @NotBlank
+    @Size(min = 3, max = 20)
+    private String username;
+    
+    @NotBlank
+    @Email
+    private String email;
+    
+    @NotBlank
+    @Size(min = 6, max = 40)
+    private String password;
+    
+    @NotBlank
+    private String fullName;
+}
+
+// AddToCartRequest.java
+package com.flipkart.ecommerce.dto;
+
+import lombok.Data;
+
+@Data
+public class AddToCartRequest {
+    private Long productId;
+    private Integer quantity;
+}
+
+// OrderRequest.java
+package com.flipkart.ecommerce.dto;
+
+import lombok.Data;
+
+@Data
+public class OrderRequest {
+    private String shippingAddress;
+    private String paymentMethod;
+}
